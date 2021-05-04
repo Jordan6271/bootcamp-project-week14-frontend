@@ -60,6 +60,7 @@ class Add extends React.Component {
 						disabled={this.state.disabled}
 					/>
 					<br />
+					Location: <br />
 					<input
 						type="text"
 						defaultValue={this.props.currentEvent?.location}
@@ -67,6 +68,7 @@ class Add extends React.Component {
 						disabled={this.state.disabled}
 					/>
 					<br />
+					Description: <br />
 					<input
 						type="text"
 						defaultValue={this.props.currentEvent?.description}
@@ -74,6 +76,7 @@ class Add extends React.Component {
 						disabled={this.state.disabled}
 					/>
 					<br />
+					Date: <br />
 					<input
 						type="text"
 						defaultValue={this.props.currentEvent?.date}
@@ -81,6 +84,7 @@ class Add extends React.Component {
 						disabled={this.state.disabled}
 					/>
 					<br />
+					Time: <br />
 					<input
 						type="text"
 						defaultValue={this.props.currentEvent?.time}

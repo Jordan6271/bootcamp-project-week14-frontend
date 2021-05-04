@@ -12,7 +12,7 @@ export class ApiClient {
 		});
 	}
 
-	getEvents() {
+	getEvent() {
 		return this.fetchApi(`get`, url);
 	}
 
