@@ -8,6 +8,41 @@ class Add extends React.Component {
 		};
 	}
 
+	submitHandler(event) {
+		event.preventDefault();
+		this.setState({ disabled: true });
+		let result;
+		if (this.props.currentEvent) {
+			result = this.props.apiClient.updateEvent(
+				this.props.currentEvent._id,
+				event.target.eventName.value,
+				event.target.eventLocation.value,
+				event.target.eventDescription.value,
+				event.target.eventDate.value,
+				event.target.eventTime.value
+			);
+		} else {
+			result = this.props.apiClient.addEvent(
+				event.target.eventName.value,
+				event.target.eventLocation.value,
+				event.target.eventDescription.value,
+				event.target.eventDate.value,
+				event.target.eventTime.value
+			);
+		}
+		result
+			.then(() => {
+				this.setState({ disabled: false });
+				document.getElementById(`add-event-form`).reset();
+				this.props.refreshList();
+			})
+			.catch(() => {
+				console.log(`Catch error!`);
+				alert(`An error occurred, please try again.`);
+				this.setState({ disabled: false });
+			});
+	}
+
 	render() {
 		return (
 			<div>
