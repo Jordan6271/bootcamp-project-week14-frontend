@@ -2,15 +2,30 @@ import React from "react";
 import { ApiClient } from "./ApiClient/ApiClient";
 import Dashboard from "./Dashboard/Dashboard";
 
-const Eventful = () => {
-    const apiClient = new ApiClient();
+class Eventful extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            token: `secretstring`,
+        };
+        this.client = new ApiClient(
+            () => this.state.token,
+            () => this.logout()
+        );
+    }
 
-    return (
-        <div>
-            <p>Eventful!</p>
-            <Dashboard apiClient={apiClient} />
-        </div>
-    );
-};
+    logout() {
+        this.setState({ token: undefined });
+    }
+
+    render() {
+        return (
+            <div>
+                <p>Eventful!</p>
+                <Dashboard apiClient={this.client} />
+            </div>
+        );
+    }
+}
 
 export default Eventful;
