@@ -52,4 +52,15 @@ export class ApiClient {
             time,
         });
     }
+
+    async login(username, password) {
+        return await axios({
+            method: `post`,
+            url: `${url}auth`,
+            data: {
+                username,
+                password,
+            },
+        });
+    }
 }
