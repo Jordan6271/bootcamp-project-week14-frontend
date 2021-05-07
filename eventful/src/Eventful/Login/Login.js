@@ -9,7 +9,18 @@ class Login extends React.Component {
     }
 
     submitHandler(event) {
-        console.log(`Submit`);
+        event.preventDefault();
+        this.setState({ disabled: true });
+        this.props.client
+            .login(event.target.username.value, event.target.password.value)
+            .then((response) => {
+                this.setState({ disabled: false });
+                this.props.loggedIn(response.data.token);
+            })
+            .catch(() => {
+                alert(`An error occurred, please try again`);
+                this.setState({ disabled: false });
+            });
     }
 
     render() {
