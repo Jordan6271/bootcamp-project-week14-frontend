@@ -2,22 +2,35 @@ import axios from "axios";
 const url = "http://localhost:3001/";
 
 export class ApiClient {
-    fetchApi(method, url, data) {
+    constructor(tokenProvider, logoutHandler) {
+        this.tokenProvider = tokenProvider;
+        this.logoutHandler = logoutHandler;
+    }
+
+    authenticatedApiFetch(method, url, data) {
         return axios({
             method,
             url,
+            headers: {
+                authorization: this.tokenProvider(),
+            },
             data,
         }).catch((error) => {
-            throw error;
+            if (error.response.status === 403) {
+                this.logoutHandler();
+                return Promise.reject();
+            } else {
+                throw error;
+            }
         });
     }
 
     getEvent() {
-        return this.fetchApi(`get`, url);
+        return this.authenticatedApiFetch(`get`, url);
     }
 
     addEvent(name, location, description, date, time) {
-        return this.fetchApi(`post`, url, {
+        return this.authenticatedApiFetch(`post`, url, {
             name,
             location,
             description,
@@ -27,11 +40,11 @@ export class ApiClient {
     }
 
     removeEvent(id) {
-        return this.fetchApi(`delete`, `${url}${id}`);
+        return this.authenticatedApiFetch(`delete`, `${url}${id}`);
     }
 
     updateEvent(id, name, location, description, date, time) {
-        return this.fetchApi(`put`, `${url}${id}`, {
+        return this.authenticatedApiFetch(`put`, `${url}${id}`, {
             name,
             location,
             description,
