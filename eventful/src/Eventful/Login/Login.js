@@ -11,7 +11,7 @@ class Login extends React.Component {
     submitHandler(event) {
         event.preventDefault();
         this.setState({ disabled: true });
-        this.props.client
+        this.props.apiClient
             .login(event.target.username.value, event.target.password.value)
             .then((response) => {
                 this.setState({ disabled: false });

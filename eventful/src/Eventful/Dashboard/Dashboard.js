@@ -10,6 +10,14 @@ class Dashboard extends React.Component {
         };
     }
 
+    refreshList() {
+        this.props.apiClient.getEvent().then((response) =>
+            this.setState({
+                events: response.data,
+            })
+        );
+    }
+
     removeEvent(id) {
         this.props.apiClient.removeEvent(id).then(() => this.refreshList());
     }
@@ -18,6 +26,10 @@ class Dashboard extends React.Component {
         this.setState({
             currentEvent: event,
         });
+    }
+
+    componentDidMount() {
+        this.refreshList();
     }
 
     buildRows() {
@@ -40,18 +52,6 @@ class Dashboard extends React.Component {
                 </tr>
             );
         });
-    }
-
-    refreshList() {
-        this.props.apiClient.getEvent().then((response) =>
-            this.setState({
-                events: response.data,
-            })
-        );
-    }
-
-    componentDidMount() {
-        this.refreshList();
     }
 
     render() {
