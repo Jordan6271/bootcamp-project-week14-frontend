@@ -9,7 +9,7 @@ class Eventful extends React.Component {
         this.state = {
             token: window.localStorage.getItem(`token`),
         };
-        this.client = new ApiClient(
+        this.apiClient = new ApiClient(
             () => this.state.token,
             () => this.logout()
         );
@@ -27,12 +27,12 @@ class Eventful extends React.Component {
 
     render() {
         if (this.state.token) {
-            return <Dashboard client={this.client} />;
+            return <Dashboard apiClient={this.apiClient} />;
         }
         return (
             <Login
                 loggedIn={(token) => this.login(token)}
-                client={this.client}
+                apiClient={this.apiClient}
             />
         );
     }
