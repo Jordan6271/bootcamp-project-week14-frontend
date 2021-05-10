@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bootcamp-project-week14-frontend/static/css/main.6db5275d.chunk.css",
+    "main.js": "/bootcamp-project-week14-frontend/static/js/main.ed8a1ba7.chunk.js",
+    "main.js.map": "/bootcamp-project-week14-frontend/static/js/main.ed8a1ba7.chunk.js.map",
+    "runtime-main.js": "/bootcamp-project-week14-frontend/static/js/runtime-main.2ad5811a.js",
+    "runtime-main.js.map": "/bootcamp-project-week14-frontend/static/js/runtime-main.2ad5811a.js.map",
+    "static/js/2.217c5ad4.chunk.js": "/bootcamp-project-week14-frontend/static/js/2.217c5ad4.chunk.js",
+    "static/js/2.217c5ad4.chunk.js.map": "/bootcamp-project-week14-frontend/static/js/2.217c5ad4.chunk.js.map",
+    "static/js/3.abb49485.chunk.js": "/bootcamp-project-week14-frontend/static/js/3.abb49485.chunk.js",
+    "static/js/3.abb49485.chunk.js.map": "/bootcamp-project-week14-frontend/static/js/3.abb49485.chunk.js.map",
+    "index.html": "/bootcamp-project-week14-frontend/index.html",
+    "static/css/main.6db5275d.chunk.css.map": "/bootcamp-project-week14-frontend/static/css/main.6db5275d.chunk.css.map",
+    "static/js/2.217c5ad4.chunk.js.LICENSE.txt": "/bootcamp-project-week14-frontend/static/js/2.217c5ad4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2ad5811a.js",
+    "static/js/2.217c5ad4.chunk.js",
+    "static/css/main.6db5275d.chunk.css",
+    "static/js/main.ed8a1ba7.chunk.js"
+  ]
+}
