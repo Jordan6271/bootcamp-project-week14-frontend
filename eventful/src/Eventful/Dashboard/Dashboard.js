@@ -78,7 +78,7 @@ class Dashboard extends React.Component {
                 <br />
                 <br />
                 <div className="w-75 mx-auto text-center">
-                    <h1>Events</h1>
+                    <h1>My Events</h1>
                     <Table striped bordered hover id="events-table">
                         <thead>
                             <tr>
