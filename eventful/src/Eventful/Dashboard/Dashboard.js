@@ -1,5 +1,7 @@
 import React from "react";
+import "./Dashboard.css";
 import Add from "../Add/Add";
+import Table from "react-bootstrap/Table";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -36,18 +38,24 @@ class Dashboard extends React.Component {
         return this.state.events.map((current) => {
             return (
                 <tr key={current._id}>
-                    <td>{current.name}</td>
-                    <td>{current.location}</td>
-                    <td>{current.description}</td>
-                    <td>{current.date}</td>
-                    <td>{current.time}</td>
-                    <td>
-                        <button onClick={() => this.updateEvent(current)}>
+                    <td className="table-width-15">{current.name}</td>
+                    <td className="table-width-15">{current.location}</td>
+                    <td className="table-width-35">{current.description}</td>
+                    <td className="table-width-10">{current.date}</td>
+                    <td className="table-width-10">{current.time}</td>
+                    <td className="table-width-15">
+                        <span
+                            className="action-link update mx-2"
+                            onClick={() => this.updateEvent(current)}
+                        >
                             Update
-                        </button>
-                        <button onClick={() => this.removeEvent(current._id)}>
+                        </span>
+                        <span
+                            className="action-link remove mx-2"
+                            onClick={() => this.removeEvent(current._id)}
+                        >
                             Remove
-                        </button>
+                        </span>
                     </td>
                 </tr>
             );
@@ -57,20 +65,6 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Event Name</th>
-                            <th>Location</th>
-                            <th>Description</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>{this.buildRows()}</tbody>
-                </table>
-                <br />
-                <br />
                 <Add
                     apiClient={this.props.apiClient}
                     refreshList={() => {
@@ -81,6 +75,24 @@ class Dashboard extends React.Component {
                     }}
                     currentEvent={this.state.currentEvent}
                 />
+                <br />
+                <br />
+                <div className="w-75 mx-auto text-center">
+                    <h1>Events</h1>
+                    <Table striped bordered hover id="events-table">
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Location</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>{this.buildRows()}</tbody>
+                    </Table>
+                </div>
             </div>
         );
     }

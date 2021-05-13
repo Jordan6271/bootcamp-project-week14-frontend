@@ -1,0 +1,29 @@
+.table-width-10 {
+    width: 10%;
+}
+
+.table-width-15 {
+    width: 15%;
+}
+
+.table-width-35 {
+    width: 35%;
+}
+
+#events-table {
+    word-break: break-all;
+}
+
+.action-link {
+    cursor: pointer;
+    font-weight: bold;
+    margin: auto;
+}
+
+.remove {
+    color: red;
+}
+
+.update {
+    color: blue;
+}
