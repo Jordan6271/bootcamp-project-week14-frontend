@@ -31,7 +31,6 @@ class Dashboard extends React.Component {
     }
 
     updateEvent(event) {
-        this.props.history.push(`/add`);
         this.setState({
             currentEvent: event,
         });
