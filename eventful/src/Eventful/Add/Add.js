@@ -70,6 +70,7 @@ class Add extends React.Component {
                         <Form.Control
                             type="text"
                             placeholder="Enter event name"
+                            className="mb-3"
                             defaultValue={this.props.currentEvent?.name}
                             name="eventName"
                             disabled={this.state.disabled}
@@ -80,6 +81,7 @@ class Add extends React.Component {
                         <Form.Control
                             type="text"
                             placeholder="Enter event location"
+                            className="mb-3"
                             defaultValue={this.props.currentEvent?.location}
                             name="eventLocation"
                             disabled={this.state.disabled}
@@ -90,6 +92,7 @@ class Add extends React.Component {
                         <Form.Control
                             type="text"
                             placeholder="Enter event description"
+                            className="mb-3"
                             defaultValue={this.props.currentEvent?.description}
                             name="eventDescription"
                             disabled={this.state.disabled}
@@ -100,6 +103,7 @@ class Add extends React.Component {
                         <Form.Control
                             type="date"
                             placeholder="Enter event date"
+                            className="mb-3"
                             defaultValue={this.props.currentEvent?.date}
                             name="eventDate"
                             disabled={this.state.disabled}
@@ -110,6 +114,7 @@ class Add extends React.Component {
                         <Form.Control
                             type="time"
                             placeholder="Enter event time"
+                            className="mb-3"
                             defaultValue={this.props.currentEvent?.time}
                             name="eventTime"
                             disabled={this.state.disabled}
@@ -118,12 +123,14 @@ class Add extends React.Component {
                     <Button
                         variant="success"
                         type="submit"
+                        className="mx-2"
                         disabled={this.state.disabled}
                     >
                         Submit
                     </Button>
                     <Button
                         variant="danger"
+                        className="mx-2"
                         onClick={() => this.cancelUpdate()}
                         disabled={this.state.disabled}
                     >
