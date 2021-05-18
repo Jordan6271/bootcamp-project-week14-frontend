@@ -1,7 +1,13 @@
 import React from "react";
 import "./Dashboard.css";
 import Add from "../Add/Add";
+
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
+
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -27,6 +33,7 @@ class Dashboard extends React.Component {
     updateEvent(event) {
         this.setState({
             currentEvent: event,
+            redirect: "/add",
         });
     }
 
@@ -44,12 +51,14 @@ class Dashboard extends React.Component {
                     <td className="table-width-10">{current.date}</td>
                     <td className="table-width-10">{current.time}</td>
                     <td className="table-width-15">
-                        <span
-                            className="action-link update mx-2"
-                            onClick={() => this.updateEvent(current)}
-                        >
-                            Update
-                        </span>
+                        <Link to="/add">
+                            <span
+                                className="action-link update mx-2"
+                                onClick={() => this.updateEvent(current)}
+                            >
+                                Update
+                            </span>
+                        </Link>
                         <span
                             className="action-link remove mx-2"
                             onClick={() => this.removeEvent(current._id)}
@@ -64,36 +73,88 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <div>
-                <Add
-                    apiClient={this.props.apiClient}
-                    refreshList={() => {
-                        this.refreshList();
-                        this.setState({
-                            currentEvent: undefined,
-                        });
-                    }}
-                    currentEvent={this.state.currentEvent}
-                />
-                <br />
-                <br />
-                <div className="w-75 mx-auto text-center">
-                    <h1>My Events</h1>
-                    <Table striped bordered hover id="events-table">
-                        <thead>
-                            <tr>
-                                <th>Event Name</th>
-                                <th>Location</th>
-                                <th>Description</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>{this.buildRows()}</tbody>
-                    </Table>
-                </div>
-            </div>
+            <Router>
+                <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand>Eventful</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Link to="/" className="nav-link text-danger">
+                                View Events
+                            </Link>
+                            <Link to="/add" className="nav-link text-danger">
+                                Add New Event
+                            </Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Navbar>
+                <Container>
+                    <Switch>
+                        <Route path="/add">
+                            <Add
+                                apiClient={this.props.apiClient}
+                                refreshList={() => {
+                                    this.refreshList();
+                                    this.setState({
+                                        currentEvent: undefined,
+                                    });
+                                }}
+                                currentEvent={this.state.currentEvent}
+                            />
+                        </Route>
+                        <Route exact path="/">
+                            <div className="mx-auto text-center">
+                                <h1>My Events</h1>
+                                <Table striped bordered hover id="events-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Event Name</th>
+                                            <th>Location</th>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>{this.buildRows()}</tbody>
+                                </Table>
+                            </div>
+                        </Route>
+                        <Route path="/">Error: 404 not found</Route>
+                    </Switch>
+                </Container>
+            </Router>
+
+            // <div>
+            // <Add
+            //     apiClient={this.props.apiClient}
+            //     refreshList={() => {
+            //         this.refreshList();
+            //         this.setState({
+            //             currentEvent: undefined,
+            //         });
+            //     }}
+            //     currentEvent={this.state.currentEvent}
+            // />
+            //     <br />
+            //     <br />
+            // <div className="w-75 mx-auto text-center">
+            //     <h1>My Events</h1>
+            //     <Table striped bordered hover id="events-table">
+            //         <thead>
+            //             <tr>
+            //                 <th>Event Name</th>
+            //                 <th>Location</th>
+            //                 <th>Description</th>
+            //                 <th>Date</th>
+            //                 <th>Time</th>
+            //                 <th>Actions</th>
+            //             </tr>
+            //         </thead>
+            //         <tbody>{this.buildRows()}</tbody>
+            //     </Table>
+            // </div>
+            // </div>
         );
     }
 }
