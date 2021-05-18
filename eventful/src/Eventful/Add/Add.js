@@ -14,6 +14,7 @@ class Add extends React.Component {
     cancelUpdate() {
         document.getElementById(`add-event-form`).reset();
         this.props.refreshList();
+        this.props.history.push(`/`);
     }
 
     submitHandler(event) {

@@ -31,6 +31,7 @@ class Dashboard extends React.Component {
     }
 
     updateEvent(event) {
+        this.props.history.push(`/add`);
         this.setState({
             currentEvent: event,
         });
@@ -50,7 +51,7 @@ class Dashboard extends React.Component {
                     <td className="table-width-10">{current.date}</td>
                     <td className="table-width-10">{current.time}</td>
                     <td className="table-width-15">
-                        <Link to="/add">
+                        <Link to="/add" className="text-decoration-none">
                             <span
                                 className="action-link update mx-2"
                                 onClick={() => this.updateEvent(current)}
