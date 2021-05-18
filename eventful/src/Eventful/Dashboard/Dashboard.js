@@ -107,19 +107,31 @@ class Dashboard extends React.Component {
                         <Route exact path="/">
                             <div className="mx-auto text-center pt-4">
                                 <h1>My Events</h1>
-                                <Table striped bordered hover id="events-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Event Name</th>
-                                            <th>Location</th>
-                                            <th>Description</th>
-                                            <th>Date</th>
-                                            <th>Time</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>{this.buildRows()}</tbody>
-                                </Table>
+                                {this.state.events.length ? (
+                                    <Table
+                                        striped
+                                        bordered
+                                        hover
+                                        id="events-table"
+                                    >
+                                        <thead>
+                                            <tr>
+                                                <th>Event Name</th>
+                                                <th>Location</th>
+                                                <th>Description</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>{this.buildRows()}</tbody>
+                                    </Table>
+                                ) : (
+                                    <div className="mt-4">
+                                        Sorry, you have no events yet.{" "}
+                                        <Link to="/add">Try adding one!</Link>
+                                    </div>
+                                )}
                             </div>
                         </Route>
                         <Route path="/">Error: 404 not found</Route>

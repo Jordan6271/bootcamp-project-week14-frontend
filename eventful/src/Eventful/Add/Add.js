@@ -74,6 +74,7 @@ class Add extends React.Component {
                             defaultValue={this.props.currentEvent?.name}
                             name="eventName"
                             disabled={this.state.disabled}
+                            required
                         />
                     </Form.Group>
                     <Form.Group controlId="eventLocation">
@@ -85,6 +86,7 @@ class Add extends React.Component {
                             defaultValue={this.props.currentEvent?.location}
                             name="eventLocation"
                             disabled={this.state.disabled}
+                            required
                         />
                     </Form.Group>
                     <Form.Group controlId="eventDescription">
@@ -96,6 +98,7 @@ class Add extends React.Component {
                             defaultValue={this.props.currentEvent?.description}
                             name="eventDescription"
                             disabled={this.state.disabled}
+                            required
                         />
                     </Form.Group>
                     <Form.Group controlId="eventDate">
@@ -107,6 +110,7 @@ class Add extends React.Component {
                             defaultValue={this.props.currentEvent?.date}
                             name="eventDate"
                             disabled={this.state.disabled}
+                            required
                         />
                     </Form.Group>
                     <Form.Group controlId="eventTime">
@@ -118,6 +122,7 @@ class Add extends React.Component {
                             defaultValue={this.props.currentEvent?.time}
                             name="eventTime"
                             disabled={this.state.disabled}
+                            required
                         />
                     </Form.Group>
                     <Button
