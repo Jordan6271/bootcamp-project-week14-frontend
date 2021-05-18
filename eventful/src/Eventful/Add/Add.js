@@ -1,29 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { withRouter } from "react-router-dom";
 
-class Add extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            disabled: false,
-        };
-    }
+const Add = (props) => {
+    const [disabled, setDisabled] = useState(false);
 
-    cancelUpdate() {
+    const cancelUpdate = () => {
         document.getElementById(`add-event-form`).reset();
-        this.props.refreshList();
-        this.props.history.push(`/`);
-    }
+        props.refreshList();
+        props.history.push(`/`);
+    };
 
-    submitHandler(event) {
+    const submitHandler = (event) => {
         event.preventDefault();
-        this.setState({ disabled: true });
+        setDisabled(true);
         let result;
-        if (this.props.currentEvent) {
-            result = this.props.apiClient.updateEvent(
-                this.props.currentEvent._id,
+        if (props.currentEvent) {
+            result = props.apiClient.updateEvent(
+                props.currentEvent._id,
                 event.target.eventName.value,
                 event.target.eventLocation.value,
                 event.target.eventDescription.value,
@@ -31,7 +26,7 @@ class Add extends React.Component {
                 event.target.eventTime.value
             );
         } else {
-            result = this.props.apiClient.addEvent(
+            result = props.apiClient.addEvent(
                 event.target.eventName.value,
                 event.target.eventLocation.value,
                 event.target.eventDescription.value,
@@ -41,111 +36,104 @@ class Add extends React.Component {
         }
         result
             .then(() => {
-                this.setState({ disabled: false });
+                setDisabled(false);
                 document.getElementById(`add-event-form`).reset();
-                this.props.refreshList();
-                this.props.history.push(`/`);
+                props.refreshList();
+                props.history.push(`/`);
             })
             .catch(() => {
-                console.log(`Catch error!`);
                 alert(`An error occurred, please try again.`);
-                this.setState({ disabled: false });
+                setDisabled(false);
             });
-    }
+    };
 
-    render() {
-        return (
-            <div>
-                <Form
-                    className="w-25 mx-auto text-center pt-4"
-                    id="add-event-form"
-                    onSubmit={(event) => this.submitHandler(event)}
+    return (
+        <div>
+            <Form
+                className="w-25 mx-auto text-center pt-4"
+                id="add-event-form"
+                onSubmit={(event) => submitHandler(event)}
+            >
+                <h1>{props.currentEvent ? "Update event" : "Add new event"}</h1>
+                <Form.Group controlId="eventName">
+                    <Form.Label>Name:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter event name"
+                        className="mb-3"
+                        defaultValue={props.currentEvent?.name}
+                        name="eventName"
+                        disabled={disabled}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group controlId="eventLocation">
+                    <Form.Label>Location:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter event location"
+                        className="mb-3"
+                        defaultValue={props.currentEvent?.location}
+                        name="eventLocation"
+                        disabled={disabled}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group controlId="eventDescription">
+                    <Form.Label>Description:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter event description"
+                        className="mb-3"
+                        defaultValue={props.currentEvent?.description}
+                        name="eventDescription"
+                        disabled={disabled}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group controlId="eventDate">
+                    <Form.Label>Date:</Form.Label>
+                    <Form.Control
+                        type="date"
+                        placeholder="Enter event date"
+                        className="mb-3"
+                        defaultValue={props.currentEvent?.date}
+                        name="eventDate"
+                        disabled={disabled}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group controlId="eventTime">
+                    <Form.Label>Time:</Form.Label>
+                    <Form.Control
+                        type="time"
+                        placeholder="Enter event time"
+                        className="mb-3"
+                        defaultValue={props.currentEvent?.time}
+                        name="eventTime"
+                        disabled={disabled}
+                        required
+                    />
+                </Form.Group>
+                <Button
+                    variant="success"
+                    type="submit"
+                    className="mx-2"
+                    disabled={disabled}
                 >
-                    <h1>
-                        {this.props.currentEvent
-                            ? "Update event"
-                            : "Add new event"}
-                    </h1>
-                    <Form.Group controlId="eventName">
-                        <Form.Label>Name:</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter event name"
-                            className="mb-3"
-                            defaultValue={this.props.currentEvent?.name}
-                            name="eventName"
-                            disabled={this.state.disabled}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="eventLocation">
-                        <Form.Label>Location:</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter event location"
-                            className="mb-3"
-                            defaultValue={this.props.currentEvent?.location}
-                            name="eventLocation"
-                            disabled={this.state.disabled}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="eventDescription">
-                        <Form.Label>Description:</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter event description"
-                            className="mb-3"
-                            defaultValue={this.props.currentEvent?.description}
-                            name="eventDescription"
-                            disabled={this.state.disabled}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="eventDate">
-                        <Form.Label>Date:</Form.Label>
-                        <Form.Control
-                            type="date"
-                            placeholder="Enter event date"
-                            className="mb-3"
-                            defaultValue={this.props.currentEvent?.date}
-                            name="eventDate"
-                            disabled={this.state.disabled}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="eventTime">
-                        <Form.Label>Time:</Form.Label>
-                        <Form.Control
-                            type="time"
-                            placeholder="Enter event time"
-                            className="mb-3"
-                            defaultValue={this.props.currentEvent?.time}
-                            name="eventTime"
-                            disabled={this.state.disabled}
-                            required
-                        />
-                    </Form.Group>
-                    <Button
-                        variant="success"
-                        type="submit"
-                        className="mx-2"
-                        disabled={this.state.disabled}
-                    >
-                        Submit
-                    </Button>
-                    <Button
-                        variant="danger"
-                        className="mx-2"
-                        onClick={() => this.cancelUpdate()}
-                        disabled={this.state.disabled}
-                    >
-                        Cancel
-                    </Button>
-                </Form>
-            </div>
-        );
-    }
-}
+                    Submit
+                </Button>
+                <Button
+                    variant="danger"
+                    className="mx-2"
+                    onClick={() => cancelUpdate()}
+                    disabled={disabled}
+                >
+                    Cancel
+                </Button>
+            </Form>
+        </div>
+    );
+};
 
 export default withRouter(Add);
