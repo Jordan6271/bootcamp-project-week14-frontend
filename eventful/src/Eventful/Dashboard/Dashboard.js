@@ -87,6 +87,15 @@ class Dashboard extends React.Component {
                             >
                                 Add New Event
                             </Link>
+                            <Link
+                                to="/"
+                                className="nav-link text-danger px-3"
+                                onClick={() =>
+                                    this.props.apiClient.logoutHandler()
+                                }
+                            >
+                                Logout
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
