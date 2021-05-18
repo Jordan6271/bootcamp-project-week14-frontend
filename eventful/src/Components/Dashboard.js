@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Dashboard.css";
-import Add from "../Add/Add";
+import Add from "./Add";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -27,7 +26,7 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         refreshList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const buildRows = () => {
