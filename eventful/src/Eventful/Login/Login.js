@@ -12,12 +12,6 @@ class Login extends React.Component {
 
     submitHandler(event) {
         event.preventDefault();
-        if (event.target.formUsername.value === ``) {
-            return alert(`Please enter a username.`);
-        }
-        if (event.target.formPassword.value === ``) {
-            return alert(`Please enter a password.`);
-        }
         this.setState({ disabled: true });
         this.props.apiClient
             .login(
@@ -40,24 +34,23 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
-                <Form
-                    className="w-25 mx-auto text-center"
-                    onSubmit={(event) => this.submitHandler(event)}
-                >
+            <div className="w-25 m-auto text-center pt-5">
+                <Form onSubmit={(event) => this.submitHandler(event)}>
                     <h1>Log In</h1>
-                    <Form.Group controlId="formUsername">
-                        <Form.Label>Username</Form.Label>
+                    <Form.Group controlId="formUsername" className="pt-4">
+                        <Form.Label>Username:</Form.Label>
                         <Form.Control
                             type="username"
                             placeholder="Enter username"
+                            required
                         />
                     </Form.Group>
-                    <Form.Group controlId="formPassword">
-                        <Form.Label>Password</Form.Label>
+                    <Form.Group controlId="formPassword" className="py-4">
+                        <Form.Label>Password:</Form.Label>
                         <Form.Control
                             type="password"
                             placeholder="Enter password"
+                            required
                         />
                     </Form.Group>
                     <Button variant="primary" type="submit">
