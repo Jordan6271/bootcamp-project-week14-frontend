@@ -77,7 +77,7 @@ class Dashboard extends React.Component {
                     <Navbar.Brand className="mx-5">Eventful</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
+                        <Nav>
                             <Link to="/" className="nav-link text-danger px-3">
                                 View Events
                             </Link>
@@ -87,9 +87,12 @@ class Dashboard extends React.Component {
                             >
                                 Add New Event
                             </Link>
+                        </Nav>
+                        <Nav className="m-auto" />
+                        <Nav>
                             <Link
                                 to="/"
-                                className="nav-link text-danger px-3"
+                                className="ml-auto nav-link text-danger px-5"
                                 onClick={() =>
                                     this.props.apiClient.logoutHandler()
                                 }
