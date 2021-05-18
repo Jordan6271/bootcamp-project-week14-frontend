@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/bootcamp-project-week14-frontend/static/css/main.7afd800e.chunk.css",
-    "main.js": "/bootcamp-project-week14-frontend/static/js/main.f72ae7d7.chunk.js",
-    "main.js.map": "/bootcamp-project-week14-frontend/static/js/main.f72ae7d7.chunk.js.map",
-    "runtime-main.js": "/bootcamp-project-week14-frontend/static/js/runtime-main.aa7efa7e.js",
-    "runtime-main.js.map": "/bootcamp-project-week14-frontend/static/js/runtime-main.aa7efa7e.js.map",
+    "main.css": "/bootcamp-project-week14-frontend/static/css/main.c6e89102.chunk.css",
+    "main.js": "/bootcamp-project-week14-frontend/static/js/main.564c9dd7.chunk.js",
+    "main.js.map": "/bootcamp-project-week14-frontend/static/js/main.564c9dd7.chunk.js.map",
+    "runtime-main.js": "/bootcamp-project-week14-frontend/static/js/runtime-main.3633e6e6.js",
+    "runtime-main.js.map": "/bootcamp-project-week14-frontend/static/js/runtime-main.3633e6e6.js.map",
     "static/css/2.61b4cb56.chunk.css": "/bootcamp-project-week14-frontend/static/css/2.61b4cb56.chunk.css",
-    "static/js/2.25c8f575.chunk.js": "/bootcamp-project-week14-frontend/static/js/2.25c8f575.chunk.js",
-    "static/js/2.25c8f575.chunk.js.map": "/bootcamp-project-week14-frontend/static/js/2.25c8f575.chunk.js.map",
-    "static/js/3.e2386e4b.chunk.js": "/bootcamp-project-week14-frontend/static/js/3.e2386e4b.chunk.js",
-    "static/js/3.e2386e4b.chunk.js.map": "/bootcamp-project-week14-frontend/static/js/3.e2386e4b.chunk.js.map",
+    "static/js/2.e8cd8ecf.chunk.js": "/bootcamp-project-week14-frontend/static/js/2.e8cd8ecf.chunk.js",
+    "static/js/2.e8cd8ecf.chunk.js.map": "/bootcamp-project-week14-frontend/static/js/2.e8cd8ecf.chunk.js.map",
+    "static/js/3.a49025dc.chunk.js": "/bootcamp-project-week14-frontend/static/js/3.a49025dc.chunk.js",
+    "static/js/3.a49025dc.chunk.js.map": "/bootcamp-project-week14-frontend/static/js/3.a49025dc.chunk.js.map",
     "index.html": "/bootcamp-project-week14-frontend/index.html",
     "static/css/2.61b4cb56.chunk.css.map": "/bootcamp-project-week14-frontend/static/css/2.61b4cb56.chunk.css.map",
-    "static/css/main.7afd800e.chunk.css.map": "/bootcamp-project-week14-frontend/static/css/main.7afd800e.chunk.css.map",
-    "static/js/2.25c8f575.chunk.js.LICENSE.txt": "/bootcamp-project-week14-frontend/static/js/2.25c8f575.chunk.js.LICENSE.txt"
+    "static/css/main.c6e89102.chunk.css.map": "/bootcamp-project-week14-frontend/static/css/main.c6e89102.chunk.css.map",
+    "static/js/2.e8cd8ecf.chunk.js.LICENSE.txt": "/bootcamp-project-week14-frontend/static/js/2.e8cd8ecf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.aa7efa7e.js",
+    "static/js/runtime-main.3633e6e6.js",
     "static/css/2.61b4cb56.chunk.css",
-    "static/js/2.25c8f575.chunk.js",
-    "static/css/main.7afd800e.chunk.css",
-    "static/js/main.f72ae7d7.chunk.js"
+    "static/js/2.e8cd8ecf.chunk.js",
+    "static/css/main.c6e89102.chunk.css",
+    "static/js/main.564c9dd7.chunk.js"
   ]
 }
