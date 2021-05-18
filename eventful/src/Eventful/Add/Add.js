@@ -56,7 +56,7 @@ class Add extends React.Component {
         return (
             <div>
                 <Form
-                    className="w-25 mx-auto text-center"
+                    className="w-25 mx-auto text-center pt-4"
                     id="add-event-form"
                     onSubmit={(event) => this.submitHandler(event)}
                 >

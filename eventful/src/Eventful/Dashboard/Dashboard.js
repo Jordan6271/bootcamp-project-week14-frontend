@@ -33,7 +33,6 @@ class Dashboard extends React.Component {
     updateEvent(event) {
         this.setState({
             currentEvent: event,
-            redirect: "/add",
         });
     }
 
@@ -75,14 +74,17 @@ class Dashboard extends React.Component {
         return (
             <Router>
                 <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand>Eventful</Navbar.Brand>
+                    <Navbar.Brand className="mx-5">Eventful</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Link to="/" className="nav-link text-danger">
+                            <Link to="/" className="nav-link text-danger px-3">
                                 View Events
                             </Link>
-                            <Link to="/add" className="nav-link text-danger">
+                            <Link
+                                to="/add"
+                                className="nav-link text-danger px-3"
+                            >
                                 Add New Event
                             </Link>
                         </Nav>
@@ -103,7 +105,7 @@ class Dashboard extends React.Component {
                             />
                         </Route>
                         <Route exact path="/">
-                            <div className="mx-auto text-center">
+                            <div className="mx-auto text-center pt-4">
                                 <h1>My Events</h1>
                                 <Table striped bordered hover id="events-table">
                                     <thead>
@@ -124,37 +126,6 @@ class Dashboard extends React.Component {
                     </Switch>
                 </Container>
             </Router>
-
-            // <div>
-            // <Add
-            //     apiClient={this.props.apiClient}
-            //     refreshList={() => {
-            //         this.refreshList();
-            //         this.setState({
-            //             currentEvent: undefined,
-            //         });
-            //     }}
-            //     currentEvent={this.state.currentEvent}
-            // />
-            //     <br />
-            //     <br />
-            // <div className="w-75 mx-auto text-center">
-            //     <h1>My Events</h1>
-            //     <Table striped bordered hover id="events-table">
-            //         <thead>
-            //             <tr>
-            //                 <th>Event Name</th>
-            //                 <th>Location</th>
-            //                 <th>Description</th>
-            //                 <th>Date</th>
-            //                 <th>Time</th>
-            //                 <th>Actions</th>
-            //             </tr>
-            //         </thead>
-            //         <tbody>{this.buildRows()}</tbody>
-            //     </Table>
-            // </div>
-            // </div>
         );
     }
 }
