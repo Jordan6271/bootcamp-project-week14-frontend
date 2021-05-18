@@ -27,6 +27,7 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         refreshList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const buildRows = () => {
