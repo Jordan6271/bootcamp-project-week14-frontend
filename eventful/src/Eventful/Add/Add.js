@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { withRouter } from "react-router-dom";
 
 class Add extends React.Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class Add extends React.Component {
                 this.setState({ disabled: false });
                 document.getElementById(`add-event-form`).reset();
                 this.props.refreshList();
+                this.props.history.push(`/`);
             })
             .catch(() => {
                 console.log(`Catch error!`);
@@ -133,4 +135,4 @@ class Add extends React.Component {
     }
 }
 
-export default Add;
+export default withRouter(Add);
