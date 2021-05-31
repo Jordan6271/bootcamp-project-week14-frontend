@@ -54,7 +54,7 @@ const Add = (props) => {
                 id="add-event-form"
                 onSubmit={(event) => submitHandler(event)}
             >
-                <h1>{props.currentEvent ? "Update event" : "Add new event"}</h1>
+                <h1>{props.currentEvent ? `Update event` : `Add new event`}</h1>
                 <Form.Group controlId="eventName">
                     <Form.Label>Name:</Form.Label>
                     <Form.Control

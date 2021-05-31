@@ -1,7 +1,8 @@
 import axios from "axios";
-const url = "https://bootcamp-week14-eventful.herokuapp.com/";
 
-export class ApiClient {
+const url = `https://bootcamp-week14-eventful.herokuapp.com/`;
+
+export default class ApiClient {
     constructor(tokenProvider, logoutHandler) {
         this.tokenProvider = tokenProvider;
         this.logoutHandler = logoutHandler;
@@ -19,9 +20,8 @@ export class ApiClient {
             if (error.response.status === 403) {
                 this.logoutHandler();
                 return Promise.reject();
-            } else {
-                throw error;
             }
+            throw error;
         });
     }
 
