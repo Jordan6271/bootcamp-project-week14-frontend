@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const Login = (props) => {
-    // eslint-disable-next-line no-unused-vars
     const [disabled, setDisabled] = useState(false);
 
     const submitHandler = (event) => {
