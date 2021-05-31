@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { ApiClient } from "./ApiClient/ApiClient";
+import ApiClient from "./ApiClient/ApiClient";
 import Dashboard from "./Components/Dashboard";
 import Login from "./Components/Login";
 

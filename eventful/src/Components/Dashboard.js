@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Add from "./Add";
+
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
-
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Add from "./Add";
 
 const Dashboard = (props) => {
     const [events, setEvents] = useState([]);
@@ -26,38 +26,34 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         refreshList();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const buildRows = () => {
-        return events.map((current) => {
-            return (
-                <tr key={current._id}>
-                    <td className="table-width-15">{current.name}</td>
-                    <td className="table-width-15">{current.location}</td>
-                    <td className="table-width-35">{current.description}</td>
-                    <td className="table-width-10">{current.date}</td>
-                    <td className="table-width-10">{current.time}</td>
-                    <td className="table-width-15">
-                        <Link to="/add" className="text-decoration-none">
-                            <span
-                                className="action-link update mx-2"
-                                onClick={() => updateEvent(current)}
-                            >
-                                Update
-                            </span>
-                        </Link>
+    const buildRows = () =>
+        events.map((current) => (
+            <tr key={current._id}>
+                <td className="table-width-15">{current.name}</td>
+                <td className="table-width-15">{current.location}</td>
+                <td className="table-width-35">{current.description}</td>
+                <td className="table-width-10">{current.date}</td>
+                <td className="table-width-10">{current.time}</td>
+                <td className="table-width-15">
+                    <Link to="/add" className="text-decoration-none">
                         <span
-                            className="action-link remove mx-2"
-                            onClick={() => removeEvent(current._id)}
+                            className="action-link update mx-2"
+                            onClick={() => updateEvent(current)}
                         >
-                            Remove
+                            Update
                         </span>
-                    </td>
-                </tr>
-            );
-        });
-    };
+                    </Link>
+                    <span
+                        className="action-link remove mx-2"
+                        onClick={() => removeEvent(current._id)}
+                    >
+                        Remove
+                    </span>
+                </td>
+            </tr>
+        ));
 
     return (
         <Router>
@@ -116,7 +112,8 @@ const Dashboard = (props) => {
                                 </Table>
                             ) : (
                                 <div className="mt-4">
-                                    Sorry, you have no events yet.{" "}
+                                    Sorry, you have no events yet.
+                                    {` `}
                                     <Link to="/add">Try adding one!</Link>
                                 </div>
                             )}
